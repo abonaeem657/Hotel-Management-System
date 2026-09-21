@@ -1,0 +1,28 @@
+@model IReadOnlyList<hotel.Models.ContactMessage>
+@{ ViewData["Title"] = "Inbox"; }
+<h1>Inbox <span class="badge bg-primary">@Model.Count(m => !m.IsRead) unread</span></h1>
+<partial name="_ManagementFeedback" />
+@if (!Model.Any())
+{
+    <div class="empty-state" role="status">No contact messages to show.</div>
+}
+else
+{
+    <div class="table-responsive" role="region" tabindex="0" aria-label="@ViewData["Title"] table"><table class="table align-middle">
+        <thead><tr><th>Sender</th><th>Email</th><th>Message</th><th>Sent (UTC)</th><th>Status</th><th>Actions</th></tr></thead>
+        <tbody>
+        @foreach (var item in Model)
+        {
+            <tr class="@(!item.IsRead ? "table-warning" : "")">
+                <td>@item.SenderName</td><td>@item.Email</td>
+                <td class="inbox-preview"><span class="message-snippet">@item.MessageBody</span></td>
+                <td>@item.SentDate.ToString("yyyy-MM-dd HH:mm")</td><td><span class="badge status-badge @(item.IsRead ? "status-read" : "status-unread")">@(item.IsRead ? "Read" : "Unread")</span></td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-primary">View</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger">Delete</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table></div>
+}

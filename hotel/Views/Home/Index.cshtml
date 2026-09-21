@@ -1,0 +1,20 @@
+﻿@{ ViewData["Title"] = "Welcome"; }
+@section Styles { <link rel="stylesheet" href="~/css/customer.css" asp-append-version="true" /> }
+<section class="home-hero" aria-labelledby="welcome-title">
+    <div>
+        <p class="eyebrow">A space to make your own</p>
+        <h1 id="welcome-title">Welcome to Our Hotel</h1>
+        <p class="lead">Find a room that feels right for your next stay. Explore the details, choose your dates, and let your visit begin.</p>
+        <div class="d-flex gap-3 flex-wrap mt-4">
+            <a asp-controller="CustomerRooms" asp-action="Index" class="btn btn-primary">Browse Rooms <span aria-hidden="true">&rarr;</span></a>
+            <a asp-controller="Contact" asp-action="Index" class="btn btn-outline-dark">Contact Us</a>
+        </div>
+    </div>
+    <div class="hero-art" aria-hidden="true"></div>
+</section>
+<section class="home-highlights" aria-label="Plan your visit">
+    <article class="home-highlight"><p class="eyebrow">01 / Discover</p><h2>Find your room</h2><p>Explore room photos, included services, and nightly rates in one place.</p></article>
+    <article class="home-highlight"><p class="eyebrow">02 / Plan</p><h2>See your stay clearly</h2><p>Choose your dates and review a price preview before requesting a booking.</p></article>
+    <article class="home-highlight"><p class="eyebrow">03 / Stay informed</p><h2>Keep track of your visit</h2><p>Sign in to follow your booking status, or send us a message with your questions.</p></article>
+</section>
+

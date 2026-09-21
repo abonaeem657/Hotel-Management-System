@@ -1,0 +1,12 @@
+@model hotel.Models.Offer
+@{ ViewData["Title"] = "Delete Offers"; }
+<h1>@ViewData["Title"]</h1>
+<p class="alert alert-warning">Confirm deletion of this record.</p>
+<dl class="row">
+    <dt class="col-sm-3">Minimum nights</dt><dd class="col-sm-9">@Model.MinimumNights</dd>
+    <dt class="col-sm-3">Discount percentage</dt><dd class="col-sm-9">@Model.DiscountPercentage</dd>
+</dl>
+<form asp-action="DeleteConfirmed" asp-route-id="@Model.Id" method="post" asp-antiforgery="true">
+    <button class="btn btn-danger" type="submit">Delete</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>

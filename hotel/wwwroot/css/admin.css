@@ -1,0 +1,71 @@
+/* Administration navigation, data tables, dashboard, and management forms. */
+.admin-nav{background:#fff;border-bottom:1px solid var(--hotel-border)}
+.admin-nav .navbar{padding:.6rem .75rem}
+
+.admin-nav .nav-link{color:#52636f;font-size:.84rem;font-weight:600;border-radius:.45rem;padding:.65rem .75rem}
+
+.admin-nav .navbar-nav .nav-link.active{background:var(--hotel-ink);color:#fff}
+.admin-nav .nav-link:hover{background:#eaf0f3;color:var(--hotel-ink)}
+.admin-nav .navbar-nav .nav-link.active:hover{background:var(--hotel-ink-hover);color:#fff}
+
+.admin-nav-label{font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;color:#677780}
+
+.admin-page{background:#f3f5f6}
+.admin-main{max-width:1320px}
+.admin-main>.container{max-width:none}
+
+.admin-main .table-responsive{border:1px solid var(--hotel-border);border-radius:.85rem;background:#fff;box-shadow:var(--hotel-shadow);margin-bottom:1.5rem}
+
+.admin-main .table{color:var(--hotel-ink);font-size:.88rem;margin-bottom:0;--bs-table-striped-bg:#f8fafb;--bs-table-striped-color:#263e4c}
+
+.admin-main .table>:not(caption)>*>*{padding:1rem;border-bottom-color:#e5e9ec;vertical-align:middle}
+
+.admin-main .table thead th{background:#edf1f3;font-size:.7rem;text-transform:uppercase;letter-spacing:.075em;color:#596c79;white-space:nowrap;padding-top:.9rem;padding-bottom:.9rem;border-bottom-width:1px}
+
+.admin-main .table td{min-width:5rem;overflow-wrap:anywhere;max-width:22rem}
+.admin-main .table td:last-child{min-width:12rem}
+.admin-main .table .btn{margin:.15rem .1rem;white-space:nowrap}
+
+.admin-main .table-warning{--bs-table-bg:#fff9ed;--bs-table-color:#4d4331;border-left:3px solid var(--hotel-gold)}
+
+.admin-main .table-bordered>:not(caption)>*{border-width:0}
+.admin-main .table-bordered>:not(caption)>*>*{border-width:0 0 1px}
+
+.admin-main>form:not(.d-inline),.admin-main>.container>form{background:#fff;padding:clamp(1.25rem,3vw,2rem);border:1px solid var(--hotel-border);border-radius:var(--hotel-radius);box-shadow:var(--hotel-shadow);width:100%;max-width:48rem}
+
+.admin-main>dl{max-width:48rem;background:white;border:1px solid var(--hotel-border);padding:1.5rem;border-radius:var(--hotel-radius);margin-left:0;margin-right:0}
+
+.admin-main .filter-tabs{background:#e7ecef;padding:.4rem;border-radius:.8rem;width:fit-content}
+.admin-main .filter-tabs .btn{border:0}
+
+.dashboard-heading{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;align-items:center}
+.dashboard-heading h1{margin-bottom:.6rem}
+
+.dashboard-stat{border-top:3px solid #bba272;height:100%;box-shadow:none}
+.dashboard-stat .card-body{padding:1.5rem}
+
+.dashboard-stat h2{font-size:.8rem;color:var(--hotel-muted);min-height:2.5em;font-weight:600}
+.dashboard-stat p{font-size:2.25rem;font-variant-numeric:tabular-nums;font-weight:650;letter-spacing:-.05em}
+
+.revenue-card{border-radius:var(--hotel-radius);background:var(--hotel-ink);color:#fff;padding:2rem;margin:1.75rem 0}
+
+.revenue-card h2{color:#dbc697;font-size:.85rem}
+.revenue-card .revenue-total{font-size:2.3rem;font-weight:600;letter-spacing:-.04em}
+.revenue-card p:last-child{color:#cbd7dd;font-size:.85rem;margin-bottom:0}
+
+.quick-actions{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.75rem}
+.quick-actions a{text-align:left;background:white;padding:1rem}
+
+.inbox-preview{min-width:14rem}
+.inbox-preview .message-snippet{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+
+@media(max-width:1199.98px){.admin-nav .navbar-collapse{padding-top:.75rem}
+.admin-nav .navbar-nav{gap:.25rem}
+}
+
+@media(max-width:575.98px){.admin-main .table{font-size:.8rem}
+.admin-main .table>:not(caption)>*>*{padding:.8rem}
+.dashboard-stat .card-body{padding:1.1rem}
+}
+
+

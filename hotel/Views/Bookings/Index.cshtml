@@ -1,0 +1,65 @@
+@model hotel.ViewModels.AdminBookingsViewModel
+@{ ViewData["Title"] = "Bookings"; }
+<p class="eyebrow">Reservations</p><h1>Booking Management</h1><p class="page-intro">Review requests, manage arrivals, and keep every stay up to date.</p>
+<partial name="_ManagementFeedback" />
+<div class="filter-tabs d-flex flex-wrap gap-2 mb-3" role="group" aria-label="Filter bookings by status">
+    <a asp-action="Index" class="btn @(Model.Status == null ? "btn-primary" : "btn-outline-primary")">All</a>
+    @foreach (var status in Enum.GetValues<BookingStatus>())
+    {
+        <a asp-action="Index" asp-route-status="@status" class="btn @(Model.Status == status ? "btn-primary" : "btn-outline-primary")" aria-current="@(Model.Status == status ? "page" : null)">@status</a>
+    }
+</div>
+@if (!Model.Bookings.Any())
+{
+    <div class="empty-state" role="status">No bookings to show.</div>
+}
+else
+{
+    <div class="table-responsive" role="region" tabindex="0" aria-label="@ViewData["Title"] table"><table class="table table-striped align-middle">
+        <thead><tr><th>ID</th><th>Customer</th><th>Email</th><th>Room</th><th>Type</th><th>Check-in</th><th>Check-out</th><th>Nights</th><th>Total</th><th>Status</th><th>Rejection reason</th><th>Actions</th></tr></thead>
+        <tbody>
+        @foreach (var booking in Model.Bookings)
+        {
+            <tr>
+                <td>@booking.Id</td><td>@booking.User.Name</td><td>@booking.User.Email</td>
+                <td>@booking.Room.RoomNumber</td><td>@booking.Room.RoomType</td>
+                <td>@booking.CheckInDate.ToString("yyyy-MM-dd")</td><td>@booking.CheckOutDate.ToString("yyyy-MM-dd")</td>
+                <td>@((booking.CheckOutDate.Date - booking.CheckInDate.Date).Days)</td><td>@booking.TotalAmount.ToString("N2")</td>
+                <td><span class="badge status-badge status-@booking.BookingStatus.ToString().ToLowerInvariant()">@booking.BookingStatus</span></td><td>@(booking.BookingStatus == BookingStatus.Rejected ? booking.RejectionReason : "")</td>
+                <td>
+                @if (booking.BookingStatus == BookingStatus.Pending)
+                {
+                    <form asp-action="Approve" asp-route-id="@booking.Id" method="post" asp-antiforgery="true" class="d-inline">
+                        <button type="submit" class="btn btn-success btn-sm">Approve</button>
+                    </form>
+                    <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#reject-@booking.Id">Reject</button>
+                }
+                @if (booking.BookingStatus == BookingStatus.Approved)
+                {
+                    <form asp-action="Complete" asp-route-id="@booking.Id" method="post" asp-antiforgery="true">
+                        <button type="submit" class="btn btn-primary btn-sm">Complete / Checkout</button>
+                    </form>
+                }
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table></div>
+}
+@foreach (var booking in Model.Bookings.Where(b => b.BookingStatus == BookingStatus.Pending))
+{
+    <div class="modal fade" id="reject-@booking.Id" tabindex="-1" aria-labelledby="reject-title-@booking.Id" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable"><div class="modal-content">
+            <form asp-action="Reject" asp-route-id="@booking.Id" method="post" asp-antiforgery="true">
+                <div class="modal-header"><h2 class="modal-title fs-5" id="reject-title-@booking.Id">Reject booking #@booking.Id</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+                <div class="modal-body">
+                    <label for="reason-@booking.Id" class="form-label">Rejection reason</label>
+                    <textarea id="reason-@booking.Id" name="rejectionReason" class="form-control" rows="4" required></textarea>
+                </div>
+                <div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-danger">Reject booking</button></div>
+            </form>
+        </div></div>
+    </div>
+}

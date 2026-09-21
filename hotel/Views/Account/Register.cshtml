@@ -1,0 +1,48 @@
+@model hotel.ViewModels.RegisterViewModel
+@{
+    ViewData["Title"] = "Create your account";
+}
+@section Styles {
+    <link rel="stylesheet" href="~/css/customer.css" asp-append-version="true" />
+}
+<div class="customer-page py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-9 col-lg-6">
+            <div class="stay-booking auth-card p-4 p-md-5">
+                <p class="stay-eyebrow">Your next stay starts here</p>
+                <h1 class="h2 mb-2">Create your account</h1>
+                <p class="text-muted mb-4">Book your stay and keep all your requests in one place.</p>
+                <form asp-action="Register" method="post" asp-antiforgery="true">
+                    <p class="required-note">All fields are required.</p>
+                    <div asp-validation-summary="All" class="text-danger small" role="alert"></div>
+                    <div class="mb-3">
+                        <label asp-for="Name" class="form-label"></label>
+                        <input asp-for="Name" class="form-control" autocomplete="name" required />
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Email" class="form-label"></label>
+                        <input asp-for="Email" class="form-control" autocomplete="email" required />
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="PhoneNumber" class="form-label"></label>
+                        <input asp-for="PhoneNumber" type="tel" class="form-control" autocomplete="tel" required />
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Password" class="form-label"></label>
+                        <input asp-for="Password" class="form-control" autocomplete="new-password" required />
+                        <div class="form-text">Use at least 6 characters, including uppercase and lowercase letters, a number, and a symbol.</div>
+                    </div>
+                    <div class="mb-4">
+                        <label asp-for="ConfirmPassword" class="form-label"></label>
+                        <input asp-for="ConfirmPassword" class="form-control" autocomplete="new-password" required />
+                    </div>
+                    <button type="submit" class="btn btn-dark w-100">Create account</button>
+                </form>
+                <p class="text-center small mt-4 mb-0">Already have an account? <a asp-action="Login">Log in</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

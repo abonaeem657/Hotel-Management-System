@@ -1,0 +1,56 @@
+@model hotel.ViewModels.RoomCatalogViewModel
+@{
+    ViewData["Title"] = "Find your stay";
+}
+@section Styles {
+    <link rel="stylesheet" href="~/css/customer.css" asp-append-version="true" />
+}
+<div class="customer-page">
+    <header class="stay-heading py-4 py-lg-5">
+        <p class="stay-eyebrow">A little space to unwind</p>
+        <h1 class="display-5">Find your next stay.</h1>
+        <p class="lead text-muted">Explore our available rooms and make yourself at home.</p>
+    </header>
+    <div class="page-heading">
+        <h2 class="h4 mb-0">Your room awaits</h2><span class="text-muted">@Model.Rooms.Count room(s)</span>
+    </div>
+    @if (!Model.Rooms.Any())
+    {
+        <div class="stay-empty text-center p-5"><h3 class="h5">No rooms to show</h3><p class="text-muted mb-0">There are no rooms available at the moment.</p></div>
+    }
+    <div class="row g-4">
+        @foreach (var room in Model.Rooms)
+        {
+            <div class="col-md-6 col-xl-4">
+                <article class="card stay-card h-100">
+                    @if (room.Images.Any())
+                    {
+                        <img src="@room.Images[0]" class="card-img-top stay-card-image" alt="Room @room.RoomNumber, @room.RoomType" loading="lazy" />
+                    }
+                    else
+                    {
+                        <div class="stay-placeholder stay-card-image" role="img" aria-label="Room photo coming soon"><span>Room @room.RoomNumber<br /><small>Photo coming soon</small></span></div>
+                    }
+                    <div class="card-body p-4 d-flex flex-column">
+                        <div class="d-flex flex-wrap gap-2 justify-content-between align-items-center mb-3">
+                            <span class="stay-eyebrow mb-0">Room @room.RoomNumber</span>
+                            <span class="badge status-badge status-available">Available</span>
+                        </div>
+                        <h3 class="h4">@room.RoomType</h3><p class="text-muted">@room.ShortDescription</p>
+                        <div class="d-flex gap-2 flex-wrap mb-4">
+                            @foreach (var service in room.Services)
+                            {
+                                <span class="badge stay-service">@service</span>
+                            }
+                        </div>
+                        <div class="mt-auto">
+                            <p><strong class="fs-4">@room.BasePricePerNight.ToString("N2")</strong> <span class="text-muted small">/ night · base rate</span></p>
+                            <a asp-action="Details" asp-route-id="@room.Id"
+                               class="btn btn-outline-dark w-100">View Details</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        }
+    </div>
+</div>

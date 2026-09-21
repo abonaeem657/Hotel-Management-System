@@ -1,0 +1,56 @@
+@model IReadOnlyList<hotel.ViewModels.MyBookingViewModel>
+@{
+    ViewData["Title"] = "My bookings";
+}
+@section Styles {
+    <link rel="stylesheet" href="~/css/customer.css" asp-append-version="true" />
+}
+<div class="customer-page py-5">
+    <p class="stay-eyebrow">Your stays</p><h1 class="display-5 mb-4">My bookings</h1>
+    @if (TempData["BookingSuccess"] is string message)
+    {
+        <div class="alert alert-success" role="status">@message</div>
+    }
+    @if (!Model.Any())
+    {
+        <div class="stay-empty p-5 text-center">
+            <h2 class="h4">Your next stay starts here</h2><p class="text-muted">You haven't requested a booking yet.</p>
+            <a asp-controller="CustomerRooms" asp-action="Index" class="btn btn-dark">Explore rooms</a>
+        </div>
+    }
+    <div class="row g-4">
+        @foreach (var booking in Model)
+        {
+            <div class="col-lg-6">
+                <article class="card stay-card h-100">
+                    <div class="row g-0 h-100">
+                        <div class="col-sm-4">
+                            @if (!string.IsNullOrEmpty(booking.ImagePath))
+                            {
+                                <img src="@booking.ImagePath" class="stay-booking-image" alt="Room @booking.RoomNumber" loading="lazy" />
+                            }
+                            else
+                            {
+                                <div class="stay-placeholder stay-booking-image" role="img" aria-label="Room photo coming soon"><span>Room @booking.RoomNumber</span></div>
+                            }
+                        </div>
+                        <div class="col-sm-8 p-4">
+                            <span class="badge status-badge status-@booking.Status.ToString().ToLowerInvariant() mb-3">@booking.Status</span>
+                            <h2 class="h5">@booking.RoomType · Room @booking.RoomNumber</h2>
+                            <dl class="row small mt-3">
+                                <dt class="col-5">Check-in</dt><dd class="col-7">@booking.CheckInDate.ToString("dd MMM yyyy")</dd>
+                                <dt class="col-5">Check-out</dt><dd class="col-7">@booking.CheckOutDate.ToString("dd MMM yyyy")</dd>
+                                <dt class="col-5">Nights</dt><dd class="col-7">@booking.Nights</dd>
+                                <dt class="col-5">Total amount</dt><dd class="col-7">@booking.TotalAmount.ToString("N2")</dd>
+                            </dl>
+                            @if (booking.Status == BookingStatus.Rejected && !string.IsNullOrWhiteSpace(booking.RejectionReason))
+                            {
+                                <div class="alert alert-danger small mb-0"><strong>Reason:</strong> @booking.RejectionReason</div>
+                            }
+                        </div>
+                    </div>
+                </article>
+            </div>
+        }
+    </div>
+</div>

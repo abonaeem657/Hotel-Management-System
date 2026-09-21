@@ -1,0 +1,63 @@
+@model IEnumerable<hotel.Models.RoomService>
+
+@{
+    ViewData["Title"] = "Room Services";
+}
+
+<div class="container mt-4">
+
+    <div class="page-heading">
+        <h2>Room Services</h2>
+
+        <a asp-action="Create" class="btn btn-primary">
+            Add New Service
+        </a>
+    </div>
+
+    @if (!Model.Any())
+    {
+        <div class="empty-state" role="status">No services to show. Add a service to get started.</div>
+    }
+    @if (Model.Any())
+    {
+    <div class="table-responsive" role="region" tabindex="0" aria-label="Room services table"><table class="table table-striped">
+
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Service Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            @foreach (var service in Model)
+            {
+                <tr>
+                    <td>@service.Id</td>
+
+                    <td>@service.ServiceName</td>
+
+                    <td>
+                        <a asp-action="Edit"
+                           asp-route-id="@service.Id"
+                           class="btn btn-sm btn-outline-primary">
+                            Edit
+                        </a>
+
+                        <a asp-action="Delete"
+                           asp-route-id="@service.Id"
+                           class="btn btn-sm btn-outline-danger">
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+
+    </table></div>
+    }
+
+</div>

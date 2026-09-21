@@ -1,0 +1,13 @@
+@model hotel.Models.Inventory
+@{ ViewData["Title"] = "Delete Inventory"; }
+<h1>@ViewData["Title"]</h1>
+<p class="alert alert-warning">Confirm deletion of this record.</p>
+<dl class="row">
+    <dt class="col-sm-3">Item name</dt><dd class="col-sm-9">@Model.ItemName</dd>
+    <dt class="col-sm-3">Current quantity</dt><dd class="col-sm-9">@Model.CurrentQuantity</dd>
+    <dt class="col-sm-3">Reorder level</dt><dd class="col-sm-9">@Model.ReorderLevel</dd>
+</dl>
+<form asp-action="DeleteConfirmed" asp-route-id="@Model.Id" method="post" asp-antiforgery="true">
+    <button class="btn btn-danger" type="submit">Delete</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>

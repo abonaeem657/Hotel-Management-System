@@ -1,0 +1,9 @@
+@model hotel.Models.ContactMessage
+@{ ViewData["Title"] = "Delete message"; }
+<h1>Delete message</h1>
+<p class="alert alert-warning">Delete the message from @Model.SenderName (@Model.Email)?</p>
+<p class="message-body">@Model.MessageBody</p>
+<form asp-action="DeleteConfirmed" asp-route-id="@Model.Id" method="post" asp-antiforgery="true">
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>

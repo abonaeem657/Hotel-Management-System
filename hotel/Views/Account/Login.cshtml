@@ -1,0 +1,40 @@
+@model hotel.ViewModels.LoginViewModel
+@{
+    ViewData["Title"] = "Welcome back";
+}
+@section Styles {
+    <link rel="stylesheet" href="~/css/customer.css" asp-append-version="true" />
+}
+<div class="customer-page py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-5">
+            <div class="stay-booking auth-card p-4 p-md-5">
+                <p class="stay-eyebrow">Make yourself at home</p>
+                <h1 class="h2 mb-2">Welcome back</h1>
+                <p class="text-muted mb-4">Log in to plan your stay and manage your bookings.</p>
+                <form asp-action="Login" method="post" asp-antiforgery="true">
+                    <input asp-for="ReturnUrl" type="hidden" />
+                    <p class="required-note">All fields are required; Remember Me is optional.</p>
+                    <div asp-validation-summary="All" class="text-danger small" role="alert"></div>
+                    <div class="mb-3">
+                        <label asp-for="Email" class="form-label"></label>
+                        <input asp-for="Email" class="form-control" autocomplete="username" required />
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Password" class="form-label"></label>
+                        <input asp-for="Password" class="form-control" autocomplete="current-password" required />
+                    </div>
+                    <div class="form-check mb-4">
+                        <input asp-for="RememberMe" class="form-check-input" />
+                        <label asp-for="RememberMe" class="form-check-label"></label>
+                    </div>
+                    <button type="submit" class="btn btn-dark w-100">Log in</button>
+                </form>
+                <p class="text-center small mt-4 mb-0">New here? <a asp-action="Register">Create an account</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

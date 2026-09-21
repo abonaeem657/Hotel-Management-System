@@ -1,0 +1,19 @@
+@model hotel.Models.ContactMessage
+@{ ViewData["Title"] = "Contact message"; }
+<h1>Contact message</h1>
+<partial name="_ManagementFeedback" />
+<dl class="row">
+    <dt class="col-sm-3">Sender</dt><dd class="col-sm-9">@Model.SenderName</dd>
+    <dt class="col-sm-3">Email</dt><dd class="col-sm-9">@Model.Email</dd>
+    <dt class="col-sm-3">Sent (UTC)</dt><dd class="col-sm-9">@Model.SentDate.ToString("yyyy-MM-dd HH:mm")</dd>
+    <dt class="col-sm-3">Status</dt><dd class="col-sm-9"><span class="badge status-badge @(Model.IsRead ? "status-read" : "status-unread")">@(Model.IsRead ? "Read" : "Unread")</span></dd>
+</dl>
+<p class="surface message-body">@Model.MessageBody</p>
+@if (!Model.IsRead)
+{
+    <form asp-action="MarkAsRead" asp-route-id="@Model.Id" method="post" asp-antiforgery="true" class="d-inline">
+        <button type="submit" class="btn btn-primary">Mark as read</button>
+    </form>
+}
+<a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-outline-danger">Delete</a>
+<a asp-action="Index" class="btn btn-secondary">Back to inbox</a>

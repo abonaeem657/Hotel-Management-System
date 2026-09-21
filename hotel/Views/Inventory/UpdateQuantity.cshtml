@@ -1,0 +1,11 @@
+@model hotel.ViewModels.QuantityInput
+@{ ViewData["Title"] = "Update quantity"; }
+<h1>Update quantity: @ViewData["ItemName"]</h1>
+<form asp-action="UpdateQuantity" asp-route-id="@ViewContext.RouteData.Values["id"]" method="post" asp-antiforgery="true" class="col-lg-6">
+    <div asp-validation-summary="All" class="text-danger" role="alert"></div>
+    <label asp-for="CurrentQuantity" class="form-label"></label>
+    <input asp-for="CurrentQuantity" class="form-control mb-3" type="number" min="0" step="1" />
+    <button type="submit" class="btn btn-primary">Save quantity</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>
+@section Scripts { <partial name="_ValidationScriptsPartial" /> }

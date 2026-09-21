@@ -1,0 +1,28 @@
+@model IReadOnlyList<hotel.Models.Offer>
+@{ ViewData["Title"] = "Offers"; }
+<h1>Offers</h1>
+<p class="page-intro">Manage discounts for qualifying stays.</p>
+<partial name="_ManagementFeedback" />
+<a asp-action="Create" class="btn btn-primary mb-3">Add offer</a>
+@if (!Model.Any())
+{
+    <div class="empty-state" role="status">No offers to show.</div>
+}
+else
+{
+    <div class="table-responsive" role="region" tabindex="0" aria-label="@ViewData["Title"] table"><table class="table table-striped align-middle">
+        <thead><tr><th>Minimum nights</th><th>Discount percentage</th><th>Actions</th></tr></thead>
+        <tbody>
+        @foreach (var item in Model)
+        {
+            <tr><td>@item.MinimumNights</td><td>@item.DiscountPercentage.ToString("0.##")%</td>
+            
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-primary">Edit</a>
+                
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger">Delete</a>
+            </td></tr>
+        }
+        </tbody>
+    </table></div>
+}

@@ -1,0 +1,173 @@
+/* Shared design tokens, navigation, forms, feedback, and modals. */
+:root{--hotel-ink:#182d3b;--hotel-ink-hover:#294758;--hotel-gold:#b89962;--hotel-gold-dark:#765b2e;--hotel-paper:#faf9f6;--hotel-sand:#f0ece3;--hotel-muted:#65717a;--hotel-border:#dfe3e4;--hotel-radius:1rem;--hotel-shadow:0 12px 36px rgb(24 45 59 / 6%)}
+
+html{font-size:16px;scroll-behavior:smooth}
+
+body{margin:0;min-height:100vh;display:flex;flex-direction:column;background:var(--hotel-paper);color:var(--hotel-ink);font-family:"Segoe UI",system-ui,sans-serif;line-height:1.65}
+
+a{color:var(--hotel-ink-hover);text-underline-offset:.2em}
+a:hover{color:var(--hotel-gold-dark)}
+
+h1,h2,h3,h4,h5,h6{color:var(--hotel-ink);line-height:1.2}
+
+h1{font-size:clamp(1.9rem,3vw,2.7rem);letter-spacing:-.045em;margin-bottom:1.5rem;font-weight:650}
+h2{letter-spacing:-.025em}
+
+img{max-width:100%}
+main,.row>*,.card,.navbar-collapse{min-width:0}
+main{overflow-wrap:anywhere}
+
+.site-main{flex:1;width:100%;padding-top:2.5rem;padding-bottom:4rem}
+.site-main>.container{padding:0}
+
+.site-footer{border-top:1px solid var(--hotel-border);padding:1.5rem 0;background:#fff;color:var(--hotel-muted);font-size:.85rem;margin-top:auto}
+
+.site-footer .container{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+
+.site-header{background:var(--hotel-ink);color:#fff}
+.hotel-navbar{padding:1rem 0}
+
+.hotel-navbar .navbar-brand{color:#fff;display:inline-flex;align-items:center;gap:.75rem;font-family:Georgia,serif;font-size:1.5rem;letter-spacing:-.02em}
+
+.brand-mark{width:2.5rem;height:2.5rem;display:inline-grid;place-items:center;border:1px solid var(--hotel-gold);color:#e7c993;border-radius:.65rem .65rem .15rem .15rem;font-family:Georgia,serif}
+
+.hotel-navbar .nav-link{color:#d8e0e4;font-size:.9rem;padding:.6rem .85rem;border-radius:.4rem}
+
+.hotel-navbar .nav-link:hover,.hotel-navbar .nav-link.active{background:#ffffff12;color:#fff}
+.hotel-navbar .nav-link.active{box-shadow:inset 0 -2px var(--hotel-gold)}
+
+.account-menu{display:flex;align-items:center;gap:.75rem;min-width:0}
+.account-name{color:#e0e7e9;font-size:.8rem;max-width:15rem;overflow-wrap:anywhere}
+
+.hotel-navbar .btn-outline-light{border-color:#7d8b94;color:#fff}
+
+.btn-gold{color:var(--hotel-ink);background:#e2c796;border-color:#e2c796}
+.btn-gold:hover{color:var(--hotel-ink);background:#efd8b0;border-color:#efd8b0}
+
+.btn{border-radius:.55rem;padding:.65rem 1.1rem;font-weight:600;font-size:.9rem;line-height:1.4;transition:background-color .15s ease,border-color .15s ease,box-shadow .15s ease}
+
+.btn-sm{font-size:.8rem;padding:.45rem .75rem}
+
+.btn-primary,.btn-dark{background:var(--hotel-ink);border-color:var(--hotel-ink);color:#fff}
+
+.btn-primary:hover,.btn-primary:active,.btn-dark:hover,.btn-dark:active{background:var(--hotel-ink-hover);border-color:var(--hotel-ink-hover);color:#fff}
+
+.btn-outline-primary,.btn-outline-dark{color:var(--hotel-ink);border-color:#a7b2ba}
+
+.btn-outline-primary:hover,.btn-outline-dark:hover{color:#fff;background:var(--hotel-ink);border-color:var(--hotel-ink)}
+
+.btn-secondary{background:#eef0f1;border-color:#d9dfe2;color:var(--hotel-ink)}
+.btn-secondary:hover{background:#dfe5e8;border-color:#b8c2c8;color:var(--hotel-ink)}
+
+.btn-success{background:#276049;border-color:#276049}
+.btn-danger{background:#a63b3b;border-color:#a63b3b}
+
+.btn-outline-danger{color:#a13535;border-color:#dcb9b9}
+.btn-outline-danger:hover{background:#a13535;border-color:#a13535}
+
+:focus-visible{outline:3px solid #ad7a24;outline-offset:3px}
+
+.btn:focus-visible,.form-control:focus,.form-select:focus,.form-check-input:focus{border-color:#a68a59;box-shadow:0 0 0 .22rem rgb(184 153 98 / 22%)}
+
+.skip-link{position:fixed;left:1rem;top:-5rem;z-index:2000;background:white;padding:.75rem;border-radius:.5rem}
+.skip-link:focus{top:.5rem}
+
+.form-label{font-size:.875rem;font-weight:600;margin-bottom:.5rem}
+
+.form-control,.form-select{border:1px solid #cdd5d9;border-radius:.55rem;padding:.75rem .85rem;color:var(--hotel-ink);background-color:#fff;font-size:1rem;min-width:0}
+
+.form-control::placeholder{color:#7a858d}
+.form-check-input:checked{background-color:var(--hotel-ink);border-color:var(--hotel-ink)}
+.form-check{padding-top:.2rem;padding-bottom:.2rem}
+
+.form-text,.required-note{color:var(--hotel-muted);font-size:.8rem}
+textarea.form-control{min-height:8rem;resize:vertical}
+
+.input-validation-error{border-color:#aa3c3c}
+.validation-summary-valid{display:none}
+
+.validation-summary-errors{color:#852c2c;border-left:3px solid #aa3c3c;background:#fdf0ee;padding:1rem;margin-bottom:1.5rem;border-radius:.4rem}
+
+.validation-summary-errors ul{margin:0;padding-left:1.2rem}
+.field-validation-error{display:block;margin-top:.35rem;font-size:.85rem}
+
+.card{border:1px solid var(--hotel-border);border-radius:var(--hotel-radius);box-shadow:var(--hotel-shadow);overflow-wrap:anywhere}
+
+.alert{border-radius:.7rem;padding:1rem 1.2rem;overflow-wrap:anywhere}
+
+.alert-success{color:#23513e;background:#eaf4ee;border-color:#c9dfd1}
+.alert-danger{color:#852c2c;background:#fbeeed;border-color:#e7cac7}
+
+.alert-warning{color:#77501d;background:#faf3e3;border-color:#e8d8b5}
+.alert-info{color:#415563;background:#edf2f5;border-color:#d5dfe5}
+.alert-light{color:#52616b;background:#f8f8f5}
+
+.badge{font-size:.72rem;font-weight:600;padding:.5em .75em;border-radius:2rem;line-height:1.3;white-space:normal}
+
+.status-badge{display:inline-flex;align-items:center;gap:.4rem;white-space:nowrap}
+.status-badge::before{content:"";width:.4rem;height:.4rem;border-radius:50%;background:currentColor}
+
+.status-pending,.status-unread,.status-low{background:#fbefcf;color:#775018}
+.status-approved,.status-available,.status-stock{background:#e4f1e9;color:#235940}
+
+.status-rejected,.status-unavailable{background:#f9e5e3;color:#943a35}
+.status-completed,.status-read{background:#e9eef1;color:#52616b}
+
+.eyebrow,.stay-eyebrow{text-transform:uppercase;letter-spacing:.17em;font-size:.7rem;font-weight:700;color:var(--hotel-gold-dark);margin-bottom:.8rem}
+
+.page-intro{color:var(--hotel-muted);max-width:42rem;margin-top:-.6rem;margin-bottom:2rem}
+
+.page-heading{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.page-heading h1,.page-heading h2{margin-bottom:0}
+
+.surface{padding:clamp(1.25rem,3vw,2.5rem);background:#fff;border:1px solid var(--hotel-border);border-radius:var(--hotel-radius);box-shadow:var(--hotel-shadow)}
+
+.message-body,.preserve-lines{white-space:pre-wrap;overflow-wrap:anywhere}
+.message-body{line-height:1.9}
+dd{overflow-wrap:anywhere}
+
+.empty-state{padding:2.5rem 1.5rem;background:#fff;border:1px dashed #c5cfd5;border-radius:var(--hotel-radius);text-align:center;color:var(--hotel-muted)}
+
+.empty-state::before{content:"—";display:block;color:var(--hotel-gold);font-size:2rem;line-height:1;margin-bottom:1rem}
+
+.modal-content{border:0;border-radius:var(--hotel-radius);box-shadow:0 24px 80px #102b3a33;overflow:hidden}
+
+.modal-header{padding:1.25rem 1.5rem;background:#f6f7f7;border-bottom:1px solid var(--hotel-border)}
+.modal-body{padding:1.5rem;overflow-wrap:anywhere}
+
+.modal-footer{padding:1rem 1.5rem;background:#fafafa;border-top:1px solid var(--hotel-border);gap:.4rem}
+.modal-title{font-weight:650}
+.modal .form-check{margin-bottom:.5rem}
+
+.room-admin-image{width:100%;height:180px;object-fit:cover}
+
+@media(max-width:991.98px){.hotel-navbar .navbar-collapse{padding-top:1rem}
+.account-menu{border-top:1px solid #ffffff26;margin-top:.75rem;padding-top:1rem;flex-wrap:wrap}
+.account-name{max-width:100%}
+}
+
+@media(max-width:575.98px){.site-main{padding-top:1.5rem;padding-bottom:2.5rem}
+.site-main>.container{margin-top:0}
+.hotel-navbar{padding:.8rem 0}
+.modal-dialog{margin:.6rem}
+.modal-body{padding:1.1rem}
+.page-heading>.btn{width:100%}
+.btn{min-height:42px}
+}
+
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}
+*,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important}
+}
+
+
+/* Keep the body scrollable when modal sections are nested in an existing form. */
+.modal-content > form {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.modal-content > form .modal-header,
+.modal-content > form .modal-footer { flex-shrink: 0; }
+

@@ -1,0 +1,79 @@
+/* Guest pages: landing, catalog, booking panel, and account cards. */
+.customer-page{padding-bottom:1rem}
+
+.customer-page h1,.home-hero h1{font-family:Georgia,"Times New Roman",serif;font-weight:400;letter-spacing:-.04em}
+
+.customer-page .stay-heading{border-bottom:1px solid var(--hotel-border);margin-bottom:2rem}
+.customer-page .stay-heading .lead{max-width:36rem;font-size:1.05rem}
+
+.stay-booking{border:1px solid var(--hotel-border);border-radius:var(--hotel-radius);background:#fff;box-shadow:var(--hotel-shadow)}
+
+.stay-card{overflow:hidden;transition:transform .18s ease,box-shadow .18s ease}
+.stay-card:hover{transform:translateY(-3px);box-shadow:0 18px 42px #182d3b12}
+
+.stay-card-image{height:245px;width:100%;object-fit:cover}
+
+.stay-placeholder{display:flex;align-items:center;justify-content:center;text-align:center;background:linear-gradient(135deg,#f2eee5,#dfe7e9);color:#566872}
+
+.stay-placeholder span{font-family:Georgia,serif;font-size:1.4rem}
+.stay-placeholder small{font-family:"Segoe UI",sans-serif;font-size:.8rem}
+
+.stay-service{background:var(--hotel-sand);color:#645135;border:1px solid #e6dfd2;font-weight:500}
+
+.stay-gallery{overflow:hidden;border-radius:var(--hotel-radius);background:var(--hotel-sand)}
+
+.stay-gallery-image{height:clamp(280px,36vw,520px);width:100%;object-fit:cover}
+
+.stay-gallery .carousel-control-prev,.stay-gallery .carousel-control-next{opacity:1}
+
+.stay-gallery .carousel-control-prev-icon,.stay-gallery .carousel-control-next-icon{background-color:#182d3bba;border-radius:50%;background-size:55%;width:2.5rem;height:2.5rem}
+
+.stay-thumbnail{padding:0;border:2px solid #d9d1c1;border-radius:.5rem;overflow:hidden;background:transparent}
+.stay-thumbnail img{width:76px;height:56px;object-fit:cover}
+
+.stay-description{white-space:pre-wrap;line-height:1.9;overflow-wrap:anywhere}
+
+.stay-empty{background:#f0eee7;border:1px solid #e2ded2;border-radius:var(--hotel-radius)}
+
+.stay-booking-image{width:100%;min-height:220px;height:100%;object-fit:cover}
+
+#book-this-room{border-top:4px solid var(--hotel-gold)}
+#booking-quote{padding-top:1rem;border-top:1px solid var(--hotel-border)}
+#booking-quote dd{font-variant-numeric:tabular-nums}
+
+.auth-card{max-width:38rem;margin:0 auto}
+.contact-card{max-width:44rem;margin:0 auto}
+
+.home-hero{display:grid;grid-template-columns:1.3fr .8fr;gap:3rem;align-items:center;padding:clamp(2rem,5vw,5rem);border:1px solid #e0ddd3;border-radius:1.5rem;background:#f0ece3;min-height:460px;overflow:hidden}
+
+.home-hero h1{font-size:clamp(2.8rem,5vw,4.8rem);line-height:1.05;max-width:10ch;margin-bottom:1.5rem}
+
+.home-hero .lead{font-size:1.05rem;color:#56636a;max-width:36rem;line-height:1.8}
+
+.hero-art{position:relative;height:340px;border-radius:48% 48% .75rem .75rem;border:1px solid #b6a889;background:linear-gradient(150deg,#c4b28e,#e5dcc7 55%,#b1c3c5);box-shadow:inset 0 0 0 14px #f1ece166}
+
+.hero-art::before{content:"";position:absolute;inset:12% 16% 0;border:1px solid #938770;border-bottom:0;border-radius:48% 48% 0 0;background:linear-gradient(90deg,transparent 49.5%,#ac9b7d 49.5%,#ac9b7d 50.5%,transparent 50.5%)}
+
+.hero-art::after{content:"";position:absolute;bottom:17%;left:6%;right:6%;height:1px;background:#ac9b7d;box-shadow:0 18px 0 #ac9b7d,0 36px 0 #ac9b7d}
+
+.home-highlights{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem}
+
+.home-highlight{padding:1.6rem;border-bottom:2px solid #d8c49e}
+.home-highlight h2{font-size:1.1rem}
+.home-highlight p{font-size:.9rem;color:var(--hotel-muted);margin-bottom:0}
+
+@media(min-width:992px){#book-this-room{position:sticky;top:1.5rem}
+}
+
+@media(max-width:767.98px){.home-hero{grid-template-columns:1fr;gap:2rem;min-height:auto}
+.hero-art{display:none}
+.home-highlights{grid-template-columns:1fr;gap:.25rem}
+.home-highlight{padding:1.25rem .25rem}
+}
+
+@media(max-width:575.98px){.customer-page.py-5{padding-top:1rem !important;padding-bottom:1rem !important}
+.stay-booking-image{height:190px;min-height:190px}
+.stay-gallery-image{height:280px}
+}
+
+

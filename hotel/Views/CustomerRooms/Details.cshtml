@@ -1,0 +1,134 @@
+@model hotel.ViewModels.RoomDetailsViewModel
+@{
+    ViewData["Title"] = $"Room {Model.Room.RoomNumber}";
+}
+@section Styles {
+    <link rel="stylesheet" href="~/css/customer.css" asp-append-version="true" />
+}
+<div class="customer-page py-4">
+    <a asp-controller="CustomerRooms" asp-action="Index" class="text-muted">&larr; All rooms</a>
+    <header class="my-4">
+        <p class="stay-eyebrow">Room @Model.Room.RoomNumber</p><h1 class="display-5">@Model.Room.RoomType</h1>
+        <span class="badge status-badge @(Model.Room.IsAvailable ? "status-available" : "status-unavailable")">@(Model.Room.IsAvailable ? "Available for reservations" : "Currently unavailable")</span>
+    </header>
+    <div class="row g-4 g-xl-5">
+        <div class="col-lg-8">
+            @if (Model.Room.Images.Any())
+            {
+                <div id="roomGallery" class="carousel slide stay-gallery" data-bs-interval="false" aria-label="Room photos">
+                    <div class="carousel-inner">
+                        @for (var i = 0; i < Model.Room.Images.Count; i++)
+                        {
+                            <div class="carousel-item @(i == 0 ? "active" : "")">
+                                <img src="@Model.Room.Images[i]" class="d-block w-100 stay-gallery-image" alt="Room @Model.Room.RoomNumber, photo @(i + 1)" />
+                            </div>
+                        }
+                    </div>
+                    @if (Model.Room.Images.Count > 1)
+                    {
+                        <button class="carousel-control-prev" type="button" data-bs-target="#roomGallery" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Previous photo</span></button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#roomGallery" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Next photo</span></button>
+                    }
+                </div>
+                @if (Model.Room.Images.Count > 1)
+                {
+                    <div class="d-flex gap-2 flex-wrap mt-3">
+                        @for (var i = 0; i < Model.Room.Images.Count; i++)
+                        {
+                            <button type="button" class="stay-thumbnail" data-bs-target="#roomGallery" data-bs-slide-to="@i" aria-label="Show photo @(i + 1)"><img src="@Model.Room.Images[i]" alt="" loading="lazy" /></button>
+                        }
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="stay-placeholder stay-gallery-image rounded" role="img" aria-label="Room photo coming soon"><span>Room @Model.Room.RoomNumber<br /><small>Photo coming soon</small></span></div>
+            }
+            <section class="py-4">
+                <h2 class="h4">Make yourself at home</h2>
+                <p class="text-muted stay-description">@(string.IsNullOrWhiteSpace(Model.Room.Description) ? "A comfortable space for your next stay." : Model.Room.Description)</p>
+                <h2 class="h5 mt-4">Included in your stay</h2>
+                <div class="d-flex gap-2 flex-wrap mt-3">
+                    @foreach (var service in Model.Room.Services)
+                    {
+                        <span class="badge stay-service p-3">@service</span>
+                    }
+                    @if (!Model.Room.Services.Any())
+                    {
+                        <p class="text-muted">No additional services listed.</p>
+                    }
+                </div>
+            </section>
+        </div>
+        <div class="col-lg-4">
+            <section class="stay-booking p-4" id="book-this-room">
+                <h2 class="h4">Book this room</h2>
+                <p><strong class="fs-3">@Model.Room.BasePricePerNight.ToString("N2")</strong> <span class="text-muted">/ night · base rate</span></p>
+                <p class="small text-muted">Choose your dates to check availability and see your total.</p>
+                <form asp-controller="CustomerRooms" asp-action="Preview" method="post" asp-antiforgery="true" id="booking-form">
+                    <input asp-for="Booking.RoomId" type="hidden" />
+                    <div asp-validation-summary="All" class="text-danger small" role="alert"></div>
+                    <div class="mb-3">
+                        <label asp-for="Booking.CheckInDate" class="form-label"></label>
+                        <input asp-for="Booking.CheckInDate" class="form-control" min="@DateTime.Today.ToString("yyyy-MM-dd")" required />
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Booking.CheckOutDate" class="form-label"></label>
+                        <input asp-for="Booking.CheckOutDate" class="form-control" min="@DateTime.Today.AddDays(1).ToString("yyyy-MM-dd")" required />
+                    </div>
+                    <button type="submit" class="btn btn-outline-dark w-100" disabled="@(!Model.Room.IsAvailable)">Calculate Price</button>
+                    @if (Model.Price != null)
+                    {
+                        <div id="booking-quote" class="mt-4" aria-live="polite">
+                            <h3 class="h6">Your stay · @Model.Price.Nights night(s)</h3>
+                            <dl class="row small mt-3 mb-0">
+                                <dt class="col-7 fw-normal">Base subtotal</dt><dd class="col-5 text-end">@Model.Price.BaseSubtotal.ToString("N2")</dd>
+                                @if (Model.Price.SeasonalAdjustment != 0) { <dt class="col-7 fw-normal">Seasonal adjustment</dt><dd class="col-5 text-end">@Model.Price.SeasonalAdjustment.ToString("+0.00;-0.00;0.00")</dd> }
+                                @if (Model.Price.DiscountPercentage > 0) { <dt class="col-7 fw-normal">Discount (@Model.Price.DiscountPercentage.ToString("0.##")%)</dt><dd class="col-5 text-end">−@Model.Price.DiscountAmount.ToString("N2")</dd> }
+                                <dt class="col-7 fs-6 border-top pt-3">Final total</dt><dd class="col-5 text-end fs-6 border-top pt-3 fw-bold">@Model.Price.TotalAmount.ToString("N2")</dd>
+                            </dl>
+                            @if (User.IsInRole("Customer"))
+                            {
+                                <button type="submit" asp-controller="Bookings" asp-action="Create" class="btn btn-dark w-100 mt-3">Confirm Booking</button>
+                                <p class="text-muted small mt-2 mb-0">Requests are subject to approval. Availability and price are checked again when you confirm.</p>
+                            }
+                        </div>
+                    }
+                    @if (User.Identity?.IsAuthenticated != true)
+                    {
+                        <div class="alert alert-light border small mt-3 mb-0">
+                            <a id="booking-login" asp-controller="Account" asp-action="Login"
+                               asp-route-returnUrl="@Url.Action("Details", "CustomerRooms", new { id = Model.Room.Id, checkInDate = Model.Booking.CheckInDate?.ToString("yyyy-MM-dd"), checkOutDate = Model.Booking.CheckOutDate?.ToString("yyyy-MM-dd") })"
+                               data-room-url="@Url.Action("Details", "CustomerRooms", new { id = Model.Room.Id })">Log in to confirm your booking</a>
+                            or <a asp-controller="Account" asp-action="Register">create an account</a>.
+                        </div>
+                    }
+                </form>
+            </section>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script>
+        const loginLink = document.getElementById('booking-login');
+        if (loginLink) {
+            loginLink.addEventListener('click', () => {
+                const roomUrl = new URL(loginLink.dataset.roomUrl, window.location.origin);
+                const checkIn = document.getElementById('Booking_CheckInDate').value;
+                const checkOut = document.getElementById('Booking_CheckOutDate').value;
+                if (checkIn) roomUrl.searchParams.set('checkInDate', checkIn);
+                if (checkOut) roomUrl.searchParams.set('checkOutDate', checkOut);
+                roomUrl.hash = 'book-this-room';
+                const loginUrl = new URL(loginLink.href);
+                loginUrl.searchParams.set('returnUrl', roomUrl.pathname + roomUrl.search + roomUrl.hash);
+                loginLink.href = loginUrl.href;
+            });
+        }
+        document.querySelectorAll('#booking-form input[type="date"]').forEach(input => {
+            input.addEventListener('change', () => {
+                const quote = document.getElementById('booking-quote');
+                if (quote) quote.remove();
+            });
+        });
+    </script>
+}

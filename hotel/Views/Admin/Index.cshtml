@@ -1,0 +1,33 @@
+﻿@model hotel.ViewModels.AdminDashboardViewModel
+@{ ViewData["Title"] = "Admin Dashboard"; }
+<div class="dashboard-heading">
+    <div><p class="eyebrow">Hotel management</p><h1>Admin Dashboard</h1><p class="text-muted mb-0">Your rooms, reservations, and daily operations at a glance.</p></div>
+    <a asp-controller="Bookings" asp-action="Index" asp-route-status="Pending" class="btn btn-primary">Review pending bookings</a>
+</div>
+<div class="row g-3 my-3">
+@foreach (var statistic in new (string Label, int Value)[] {
+    ("Total Rooms", Model.TotalRooms), ("Generally Available Rooms", Model.AvailableRooms),
+    ("Total Customers", Model.TotalCustomers), ("Total Bookings", Model.TotalBookings),
+    ("Pending Bookings", Model.PendingBookings), ("Approved Bookings", Model.ApprovedBookings),
+    ("Completed Bookings", Model.CompletedBookings), ("Rejected Bookings", Model.RejectedBookings),
+    ("Low Stock Items", Model.LowStockItems), ("Unread Contact Messages", Model.UnreadMessages) })
+{
+    <div class="col-6 col-lg-3"><article class="card dashboard-stat"><div class="card-body">
+        <h2>@statistic.Label</h2><p class="mb-0">@statistic.Value</p>
+    </div></article></div>
+}
+</div>
+<section class="revenue-card" aria-labelledby="revenue-title">
+    <h2 id="revenue-title">Completed booking revenue</h2>
+    <p class="revenue-total mb-2">@Model.CompletedRevenue.ToString("N2")</p>
+    <p>Only Completed bookings count. This total does not track payments.</p>
+</section>
+<h2 class="h5 mb-3">Manage your hotel</h2>
+<div class="quick-actions">
+@foreach (var link in new[] { ("Rooms", "Rooms"), ("RoomServices", "Room Services"), ("Bookings", "Bookings"),
+    ("SeasonPricing", "Season Pricing"), ("Offers", "Offers"), ("Inventory", "Inventory"), ("Inbox", "Inbox") })
+{
+    <a asp-controller="@link.Item1" asp-action="Index" class="btn btn-outline-primary">@link.Item2 <span aria-hidden="true">&rarr;</span></a>
+}
+</div>
+

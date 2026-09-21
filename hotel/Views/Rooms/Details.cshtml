@@ -1,0 +1,62 @@
+@model hotel.Models.Room
+
+@{
+    ViewData["Title"] = "Room Details";
+}
+
+<div class="container mt-4">
+
+    <h2>Room Details</h2>
+
+    <div class="card mt-3">
+        <div class="card-body">
+
+            <h4 class="card-title">
+                Room @Model.RoomNumber
+            </h4>
+
+            <hr />
+
+            <p>
+                <strong>Room Type:</strong>
+                @Model.RoomType
+            </p>
+
+            <p>
+                <strong>Price Per Night:</strong>
+                @Model.BasePricePerNight
+            </p>
+
+            <p>
+                <strong>Status:</strong>
+
+                @if (Model.IsAvailable)
+                {
+                    <span class="badge status-badge status-available">Available</span>
+                }
+                else
+                {
+                    <span class="badge status-badge status-unavailable">Unavailable</span>
+                }
+            </p>
+
+            <p>
+                <strong>Description:</strong>
+                @Model.Description
+            </p>
+
+            <a asp-action="Edit"
+               asp-route-id="@Model.Id"
+               class="btn btn-outline-primary">
+                Edit
+            </a>
+
+            <a asp-action="Index"
+               class="btn btn-secondary">
+                Back
+            </a>
+
+        </div>
+    </div>
+
+</div>

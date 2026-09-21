@@ -1,0 +1,54 @@
+@model hotel.ViewModels.RoomServicesViewModel
+
+@{
+    ViewData["Title"] = "Manage Room Services";
+}
+
+<div class="container mt-4">
+
+    <h2>Manage Services</h2>
+
+    <h5 class="mb-4">
+        Room @Model.RoomNumber
+    </h5>
+
+    <form asp-action="ManageServices" method="post">
+        <div asp-validation-summary="All" class="text-danger" role="alert"></div>
+        @if (!Model.AvailableServices.Any())
+        {
+            <div class="empty-state" role="status">No room services are available.</div>
+        }
+
+        <input type="hidden" asp-for="RoomId" />
+
+        @foreach (var service in Model.AvailableServices)
+        {
+            <div class="form-check mb-2">
+
+                <input class="form-check-input"
+                       type="checkbox"
+                       name="SelectedServiceIds"
+                       value="@service.Id"
+                       id="service_@service.Id"
+                       checked="@Model.SelectedServiceIds.Contains(service.Id)" />
+
+                <label class="form-check-label"
+                       for="service_@service.Id">
+                    @service.ServiceName
+                </label>
+
+            </div>
+        }
+
+        <button type="submit" class="btn btn-primary mt-3">
+            Save Services
+        </button>
+
+        <a asp-action="Index"
+           class="btn btn-secondary mt-3">
+            Cancel
+        </a>
+
+    </form>
+
+</div>

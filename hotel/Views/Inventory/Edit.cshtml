@@ -1,0 +1,25 @@
+@model hotel.ViewModels.InventoryInput
+@{
+    var creating = ViewContext.RouteData.Values["action"]?.ToString() == "Create";
+    ViewData["Title"] = (creating ? "Add " : "Edit ") + "Inventory";
+}
+<h1>@ViewData["Title"]</h1>
+<form asp-action="@(creating ? "Create" : "Edit")" asp-route-id="@ViewContext.RouteData.Values["id"]" method="post" asp-antiforgery="true" class="col-lg-6">
+    <p class="required-note">All fields are required.</p>
+    <div asp-validation-summary="All" class="text-danger" role="alert"></div>
+    <div class="mb-3">
+        <label asp-for="ItemName" class="form-label"></label>
+        <input asp-for="ItemName" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="CurrentQuantity" class="form-label"></label>
+        <input asp-for="CurrentQuantity" class="form-control" type="number" step="1" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="ReorderLevel" class="form-label"></label>
+        <input asp-for="ReorderLevel" class="form-control" type="number" step="1" />
+    </div>
+    <button class="btn btn-primary" type="submit">Save</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>
+@section Scripts { <partial name="_ValidationScriptsPartial" /> }

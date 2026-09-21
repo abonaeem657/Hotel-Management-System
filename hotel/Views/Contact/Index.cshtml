@@ -1,0 +1,21 @@
+﻿@model hotel.ViewModels.ContactInput
+@{ ViewData["Title"] = "Contact Us"; }
+@section Styles { <link rel="stylesheet" href="~/css/customer.css" asp-append-version="true" /> }
+<div class="customer-page">
+    <section class="surface contact-card">
+        <p class="eyebrow">We are here to help</p>
+        <h1>Contact Us</h1>
+        <p class="page-intro">Have a question about your stay? Leave us a message.</p>
+        <partial name="_ManagementFeedback" />
+        <form asp-action="Index" method="post" asp-antiforgery="true">
+            <p class="required-note">All fields are required.</p>
+            <div asp-validation-summary="All" class="text-danger" role="alert"></div>
+            <div class="mb-3"><label asp-for="SenderName" class="form-label">Your name</label><input asp-for="SenderName" class="form-control" autocomplete="name" required /></div>
+            <div class="mb-3"><label asp-for="Email" class="form-label">Email address</label><input asp-for="Email" class="form-control" autocomplete="email" required /></div>
+            <div class="mb-4"><label asp-for="MessageBody" class="form-label"></label><textarea asp-for="MessageBody" class="form-control" rows="6" aria-describedby="message-help" required></textarea><div id="message-help" class="form-text">Up to 1,000 characters.</div></div>
+            <button type="submit" class="btn btn-primary">Send message</button>
+        </form>
+    </section>
+</div>
+@section Scripts { <partial name="_ValidationScriptsPartial" /> }
+

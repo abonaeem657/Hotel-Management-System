@@ -1,0 +1,30 @@
+﻿@model hotel.Models.RoomService
+
+@{
+    ViewData["Title"] = "Delete Service";
+}
+
+<div class="container mt-4">
+
+    <h2>Delete Service</h2>
+
+    <div class="alert alert-danger">
+        Are you sure you want to delete
+        <strong>@Model.ServiceName</strong>?
+    </div>
+
+    <form asp-action="DeleteConfirmed"
+          asp-route-id="@Model.Id"
+          method="post">
+
+        <button type="submit" class="btn btn-danger">
+            Delete
+        </button>
+
+        <a asp-action="Index" class="btn btn-secondary">
+            Cancel
+        </a>
+
+    </form>
+
+</div>
