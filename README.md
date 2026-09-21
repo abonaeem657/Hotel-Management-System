@@ -252,20 +252,25 @@ Or run the project directly from Visual Studio.
 
 ## 📸 Screenshots
 
-Screenshots of the application can be added here.
+## Screenshots
 
-Recommended screenshots:
+### Home Page
+![Home Page](docs/screenshots/01-home.png)
 
-- Home Page
-- Customer Rooms
-- Room Details & Booking
-- My Bookings
-- Login / Register
-- Admin Dashboard
-- Room Management
-- Booking Management
-- Inventory Management
+### Rooms
+![Rooms](docs/screenshots/02-rooms.png)
 
+### Room Details & Booking
+![Room Details](docs/screenshots/03-room-details.png)
+
+### My Bookings
+![My Bookings](docs/screenshots/04-my-bookings.png)
+
+### Admin Dashboard
+![Admin Dashboard](docs/screenshots/05-admin-dashboard.png)
+
+### Booking Management
+![Booking Management](docs/screenshots/06-booking-management.png)
 ---
 
 ## 🔮 Possible Future Improvements
