@@ -1,4 +1,4 @@
-# 🏨 Hotel Management System
+﻿# 🏨 Hotel Management System
 
 A full-stack Hotel Management System built with **ASP.NET Core MVC**, **Entity Framework Core**, **SQL Server**, and **ASP.NET Identity**.
 
@@ -250,27 +250,14 @@ Or run the project directly from Visual Studio.
 
 ---
 
-## 📸 Screenshots
-
 ## Screenshots
 
-### Home Page
-![Home Page](docs/screenshots/01-home.png)
+Captured from the running local application. The Rooms page shows the local development catalog.
 
-### Rooms
-![Rooms](docs/screenshots/02-rooms.png)
+![Hotel home page](docs/screenshots/home.png)
 
-### Room Details & Booking
-![Room Details](docs/screenshots/03-room-details.png)
+![Hotel rooms page](docs/screenshots/rooms.png)
 
-### My Bookings
-![My Bookings](docs/screenshots/04-my-bookings.png)
-
-### Admin Dashboard
-![Admin Dashboard](docs/screenshots/05-admin-dashboard.png)
-
-### Booking Management
-![Booking Management](docs/screenshots/06-booking-management.png)
 ---
 
 ## 🔮 Possible Future Improvements
@@ -300,3 +287,5 @@ GitHub: [abonaeem657](https://github.com/abonaeem657)
 ## 📄 License
 
 This project was developed for educational and portfolio purposes.
+
+
