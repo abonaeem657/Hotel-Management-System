@@ -1,8 +1,25 @@
-﻿# 🏨 Hotel Management System
+![Hotel Management System cover](docs/cover.svg)
+
+# 🏨 Hotel Management System
+
+[Preview](#screenshots) | [Features](#-features) | [Run locally](#-getting-started)
+
 
 A full-stack Hotel Management System built with **ASP.NET Core MVC**, **Entity Framework Core**, **SQL Server**, and **ASP.NET Identity**.
 
 The guest experience includes a responsive editorial landing page, room discovery, booking views, and a distinct administration interface. The landing page now uses more defined content cards and stronger visual hierarchy.
+
+## Screenshots
+
+Captured from the running local application. The Rooms page shows the local development catalog.
+
+| Guest landing page | Room catalog |
+| --- | --- |
+| ![Hotel home page](docs/screenshots/home-new.png) | ![Hotel rooms page](docs/screenshots/rooms-new.png) |
+
+| Sign in | Narrow room view |
+| --- | --- |
+| ![Hotel sign in page](docs/screenshots/login.png) | ![Hotel rooms on a narrow screen](docs/screenshots/rooms-mobile.png) |
 
 ### Development room catalog
 
@@ -253,16 +270,6 @@ dotnet run --project hotel
 ```
 
 Or run the project directly from Visual Studio.
-
----
-
-## Screenshots
-
-New screenshots captured from the running local application. The Rooms page shows the local development catalog.
-
-![Hotel home page](docs/screenshots/home-new.png)
-
-![Hotel rooms page](docs/screenshots/rooms-new.png)
 
 ---
 

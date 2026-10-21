@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="420" viewBox="0 0 1400 420" role="img" aria-labelledby="title desc">
+<title id="title">HOTEL MANAGEMENT</title><desc id="desc">Discover rooms. Plan a stay. Keep every booking clear.</desc>
+<defs><linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#0b1f2c"/><stop offset="1" stop-color="#193b45"/></linearGradient><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity=".07"/></pattern></defs>
+<rect width="1400" height="420" rx="22" fill="url(#bg)"/><rect width="1400" height="420" rx="22" fill="url(#grid)"/>
+<circle cx="1274" cy="65" r="154" fill="#e9ca8e" opacity=".07"/><path d="M0 374C341 269 606 432 969 326" fill="none" stroke="#e9ca8e" stroke-opacity=".18" stroke-width="3"/>
+<rect x="69" y="64" width="12" height="12" rx="3" fill="#e9ca8e"/><text x="97" y="76" fill="#e9ca8e" font-family="Arial,sans-serif" font-size="16" font-weight="700" letter-spacing="4">A BETTER WAY TO STAY</text>
+<text x="69" y="174" fill="#ffffff" font-family="Arial,sans-serif" font-size="62" font-weight="800" letter-spacing="-2">HOTEL MANAGEMENT</text>
+<rect x="71" y="207" width="86" height="5" rx="3" fill="#e9ca8e"/>
+<text x="71" y="266" fill="#f2e4c4" font-family="Arial,sans-serif" font-size="23">Discover rooms. Plan a stay. Keep every booking clear.</text>
+<rect x="69" y="323" width="615" height="52" rx="13" fill="#ffffff" fill-opacity=".09" stroke="#ffffff" stroke-opacity=".14"/>
+<text x="94" y="355" fill="#e9ca8e" font-family="Arial,sans-serif" font-size="17" font-weight="700" letter-spacing="1">ASP.NET CORE  /  EF CORE  /  SQL SERVER</text>
+<rect x="961" y="106" width="338" height="241" rx="18" fill="#263d49" stroke="#d3ad72" stroke-opacity=".55"/><rect x="985" y="130" width="290" height="158" rx="11" fill="#7b867e"/><path d="M985 250L1040 215L1082 233L1135 185L1196 219L1275 162V288H985Z" fill="#b9b196"/><path d="M985 270H1275" stroke="#e7d8b4" stroke-width="4"/><rect x="985" y="305" width="180" height="12" rx="6" fill="#f2e4c4"/><rect x="985" y="326" width="110" height="8" rx="4" fill="#a7b8b8"/><circle cx="1239" cy="316" r="18" fill="#e9ca8e"/>
+</svg>
