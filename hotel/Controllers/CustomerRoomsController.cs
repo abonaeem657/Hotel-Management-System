@@ -25,7 +25,8 @@ namespace hotel.Controllers
         {
             var rooms = await _context.Rooms.AsNoTracking().Where(r => r.IsAvailable)
                 .Include(r => r.RoomImages).Include(r => r.RoomServices)
-                .AsSplitQuery().OrderBy(r => r.BasePricePerNight).ThenBy(r => r.Id).ToListAsync();
+                .AsSplitQuery().OrderByDescending(r => r.RoomImages.Any())
+                .ThenBy(r => r.BasePricePerNight).ThenBy(r => r.Id).ToListAsync();
             return View(new RoomCatalogViewModel
             {
                 Rooms = rooms.Select(CustomerRoomViewModel.FromRoom).ToList()

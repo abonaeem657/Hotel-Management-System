@@ -2,6 +2,12 @@
 
 A full-stack Hotel Management System built with **ASP.NET Core MVC**, **Entity Framework Core**, **SQL Server**, and **ASP.NET Identity**.
 
+The guest experience includes a responsive editorial landing page, room discovery, booking views, and a distinct administration interface. The landing page now uses more defined content cards and stronger visual hierarchy.
+
+### Development room catalog
+
+On startup in the Development environment, the app adds any missing sample rooms: Classic King (D101), Deluxe Twin (D204), and Signature Suite (D310). Each has a price, description, services, and a locally bundled room photograph in `hotel/wwwroot/images/demo/`. The seeder checks room numbers before inserting, does not change existing rooms, and does not run outside Development. These are illustrative demo rooms and rates, not real hotel inventory. The photos were generated with the built-in image tool for this project.
+
 The system provides separate experiences for **Customers** and **Administrators**, including room management, online booking, seasonal pricing, offers, inventory tracking, contact management, and role-based access control.
 
 ---
@@ -252,11 +258,11 @@ Or run the project directly from Visual Studio.
 
 ## Screenshots
 
-Captured from the running local application. The Rooms page shows the local development catalog.
+New screenshots captured from the running local application. The Rooms page shows the local development catalog.
 
-![Hotel home page](docs/screenshots/home.png)
+![Hotel home page](docs/screenshots/home-new.png)
 
-![Hotel rooms page](docs/screenshots/rooms.png)
+![Hotel rooms page](docs/screenshots/rooms-new.png)
 
 ---
 

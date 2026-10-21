@@ -32,6 +32,8 @@ builder.Services.AddScoped<AdminBookingService>();
 var app = builder.Build();
 
 await IdentitySeeder.SeedAsync(app.Services, app.Configuration, app.Environment.IsDevelopment());
+if (app.Environment.IsDevelopment())
+    await DemoRoomSeeder.SeedAsync(app.Services);
 
 // Configure the HTTP request pipeline
 if (!app.Environment.IsDevelopment())
