@@ -2,12 +2,18 @@
 
 # 🏨 Hotel Management System
 
-[Preview](#screenshots) | [Features](#-features) | [Run locally](#-getting-started)
+[Watch the walkthrough](#video-walkthrough) | [Screenshots](#screenshots) | [Features](#-features) | [Run locally](#-getting-started)
 
 
 A full-stack Hotel Management System built with **ASP.NET Core MVC**, **Entity Framework Core**, **SQL Server**, and **ASP.NET Identity**.
 
 The guest experience includes a responsive editorial landing page, room discovery, booking views, and a distinct administration interface. The landing page now uses more defined content cards and stronger visual hierarchy.
+
+## Video walkthrough
+
+[![Watch the Hotel Management System walkthrough](docs/video/hotel-walkthrough-poster.png)](docs/video/hotel-walkthrough.mp4)
+
+[Watch the 30-second walkthrough (MP4)](docs/video/hotel-walkthrough.mp4). This silent, captioned guest tour uses captures from the running application to show the home page, room catalog, room details, a calculated price preview, sign-in, registration, and contact page.
 
 ## Screenshots
 
