@@ -11,9 +11,13 @@ The guest experience includes a responsive editorial landing page, room discover
 
 ## Video walkthrough
 
-[![Watch the Hotel Management System walkthrough](docs/video/hotel-walkthrough-poster.png)](docs/video/hotel-walkthrough.mp4)
+[![Animated preview of the Hotel Management System walkthrough](docs/video/hotel-preview.gif)](https://abonaeem657.github.io/Hotel-Management-System/)
 
-[Watch the 30-second walkthrough (MP4)](docs/video/hotel-walkthrough.mp4). This silent, captioned guest tour uses captures from the running application to show the home page, room catalog, room details, a calculated price preview, sign-in, registration, and contact page.
+[Watch the walkthrough in your browser](https://abonaeem657.github.io/Hotel-Management-System/) · [Download the 1080p MP4 for LinkedIn](docs/video/hotel-walkthrough.mp4)
+
+This 38-second video records the running application as a guest moves through the home page, room catalog, room details, a calculated price preview, sign-in, registration, and contact page. The steady screen recording uses a small caption bar below the interface and quiet background music.
+
+Music: [Sleep (Piano Only) by Scott Buckley](https://www.scottbuckley.com.au/library/sleep/), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). The recording uses an excerpt with adjusted volume and fades.
 
 ## Screenshots
 
